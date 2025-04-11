@@ -19,7 +19,7 @@ public class AuthController {
     @Autowired
     private AuthService authService;
 
-    @PostMapping("/signUp")
+    @PostMapping("/signup")
     public ResponseEntity<EmployeesResDto> registerEmployee(@RequestBody EmployeesReqDto employeesReqDto){
         return authService.saveEmployee(employeesReqDto);
     }

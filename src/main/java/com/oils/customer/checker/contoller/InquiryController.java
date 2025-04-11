@@ -17,7 +17,12 @@ public class InquiryController {
     private InquiryService inquiryService;
 
     @PostMapping("/add")
-    public ResponseEntity<InquiryResDTO> saveNumber(@RequestBody InquiryReqDTO inquiryReqDTO){
+    public ResponseEntity<?> saveNumber(@RequestBody InquiryReqDTO inquiryReqDTO){
         return  inquiryService.saveNumber(inquiryReqDTO);
+    }
+
+    @GetMapping("/check")
+    public ResponseEntity<?> checkNumber(@RequestParam Long phoneNumber){
+        return inquiryService.checkInquiry(phoneNumber);
     }
 }

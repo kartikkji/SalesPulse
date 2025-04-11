@@ -15,7 +15,7 @@ public class InquiryReqDTO {
 
     private Long phoneNumber;
     private String name;
-    private Employees employees;
+    private String employeeEmail;
     private State state;
 
 }

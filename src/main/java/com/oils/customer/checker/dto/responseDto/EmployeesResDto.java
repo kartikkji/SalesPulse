@@ -18,5 +18,5 @@ public class EmployeesResDto {
     private String role;
     private Long phoneNumber;
     private String email;
-    private List<Inquiry> inquiries;
+    private List<InquiryResDTO> inquiries;
 }
