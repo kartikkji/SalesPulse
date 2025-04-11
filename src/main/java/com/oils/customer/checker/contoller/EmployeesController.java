@@ -6,11 +6,9 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@RequestMapping("api/v1/auto-pickup/")
+@RequestMapping("api/v1/auto-pickup")
 public class EmployeesController {
 
-    @PostMapping("register")
-    public Boolean registerEmployees(@RequestBody EmployeesReqDto){
-        return true;
-    }
+
+
 }

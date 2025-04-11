@@ -1,16 +1,20 @@
 package com.oils.customer.checker.entity;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
+
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Getter
+@Setter
 @Table(name = "Employees")
+@Builder
 public class Employees {
 
     @Id
@@ -22,5 +26,7 @@ public class Employees {
     private Long phoneNumber;
     private String email;
 
-
+    @OneToMany(mappedBy = "employees" , cascade = CascadeType.ALL)
+    @JsonIgnore()
+    private List<Inquiry> inquiries;
 }

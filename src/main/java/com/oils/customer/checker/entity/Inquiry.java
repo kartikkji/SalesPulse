@@ -1,17 +1,21 @@
 package com.oils.customer.checker.entity;
 
 
+import com.oils.customer.checker.enums.State;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.sql.Timestamp;
+import java.time.LocalDate;
+
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 @Table(name = "Inquiry")
 public class Inquiry {
 
@@ -21,6 +25,13 @@ public class Inquiry {
 
     private Long phoneNumber;
     private String name;
-    private Timestamp date;
+    private LocalDate date;
+    private State state;
+
+
+    @ManyToOne()
+    @JoinColumn(name = "employee_id")
+    private Employees employees;
+
 
 }
