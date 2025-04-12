@@ -1,4 +1,5 @@
 package com.oils.customer.checker.dto.responseDto;
+import com.oils.customer.checker.dto.requestDto.InquiryReqDTO;
 import com.oils.customer.checker.entity.Inquiry;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -18,5 +19,5 @@ public class EmployeesResDto {
     private String role;
     private Long phoneNumber;
     private String email;
-    private List<InquiryResDTO> inquiries;
+    private List<EmployeeInquiryRes> inquiries;
 }

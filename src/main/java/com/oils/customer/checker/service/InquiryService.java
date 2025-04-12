@@ -2,6 +2,7 @@ package com.oils.customer.checker.service;
 
 
 import com.oils.customer.checker.dto.requestDto.InquiryReqDTO;
+import com.oils.customer.checker.dto.responseDto.EmployeeInquiryRes;
 import com.oils.customer.checker.dto.responseDto.InquiryResDTO;
 import com.oils.customer.checker.entity.Employees;
 import com.oils.customer.checker.entity.Inquiry;
@@ -9,11 +10,13 @@ import com.oils.customer.checker.exceptions.EmployeeNotFound;
 import com.oils.customer.checker.exceptions.PhoneNumberAlreadyRegister;
 import com.oils.customer.checker.repo.InquiryRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,6 +28,7 @@ public class InquiryService {
     private InquiryRepo inquiryRepo;
 
     @Autowired
+    @Lazy
     private EmployeeService employeeService;
 
 
@@ -84,7 +88,14 @@ public class InquiryService {
     }
 
 
-//    public void saveInquiry(Employees employees, List<Inquiry> inquiryList){
-//
-//    }
+    public List<EmployeeInquiryRes> inquiryToEmployeeInquiryRes(List<Inquiry> inquiryList){
+        List<EmployeeInquiryRes> employeesResDto = new ArrayList<>();
+
+        for(Inquiry inquiry : inquiryList){
+            EmployeeInquiryRes employeeInquiryRes = new EmployeeInquiryRes(inquiry);
+            employeesResDto.add(employeeInquiryRes);
+        }
+
+        return  employeesResDto;
+    }
 }

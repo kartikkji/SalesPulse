@@ -9,6 +9,7 @@ import com.oils.customer.checker.repo.EmployeeRepo;
 import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
@@ -22,10 +23,14 @@ public class AuthService {
     private InquiryService inquiryService;
 
 
-    public ResponseEntity<EmployeesResDto> saveEmployee( EmployeesReqDto employeesReqDto){
+    public ResponseEntity<String> saveEmployee( EmployeesReqDto employeesReqDto){
 
         if(employeeRepo.findByPhoneNumber(employeesReqDto.getPhoneNumber()) != null){
             throw new PhoneNumberAlreadyRegister("Phone number already register please try another number");
+        }
+
+        if(employeeRepo.findByEmail(employeesReqDto.getEmail()) != null){
+            throw new PhoneNumberAlreadyRegister("Email already register please try another Email");
         }
 
         Employees employees = new Employees();
@@ -37,15 +42,10 @@ public class AuthService {
 
         employees = employeeRepo.save(employees);
 
-        return ResponseEntity.ok(
-                EmployeesResDto.builder()
-                        .role(employees.getRole())
-                        .email(employees.getEmail())
-                        .name(employees.getName())
-                        .phoneNumber(employees.getPhoneNumber())
-                        .id(employees.getId())
-                        .build()
-        );
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body("Employee registered successfully!");
+
+
 
     }
 }

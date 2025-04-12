@@ -20,7 +20,7 @@ public class AuthController {
     private AuthService authService;
 
     @PostMapping("/signup")
-    public ResponseEntity<EmployeesResDto> registerEmployee(@RequestBody EmployeesReqDto employeesReqDto){
+    public ResponseEntity<String> registerEmployee(@RequestBody EmployeesReqDto employeesReqDto){
         return authService.saveEmployee(employeesReqDto);
     }
 }

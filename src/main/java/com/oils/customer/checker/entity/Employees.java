@@ -26,6 +26,7 @@ public class Employees {
     private Long phoneNumber;
     private String email;
 
+
     @OneToMany(mappedBy = "employees" , cascade = CascadeType.ALL)
     @JsonIgnore()
     private List<Inquiry> inquiries;
