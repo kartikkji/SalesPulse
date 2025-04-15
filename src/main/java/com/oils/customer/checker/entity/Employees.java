@@ -25,6 +25,7 @@ public class Employees {
     private String name;
     private Long phoneNumber;
     private String email;
+    private String password;
 
 
     @OneToMany(mappedBy = "employees" , cascade = CascadeType.ALL)

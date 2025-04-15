@@ -2,13 +2,12 @@ package com.oils.customer.checker.service;
 
 
 import com.oils.customer.checker.dto.requestDto.EmployeesReqDto;
-import com.oils.customer.checker.dto.responseDto.EmployeesResDto;
 import com.oils.customer.checker.entity.Employees;
 import com.oils.customer.checker.exceptions.PhoneNumberAlreadyRegister;
 import com.oils.customer.checker.repo.EmployeeRepo;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import org.springframework.context.annotation.Lazy;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
@@ -20,6 +19,7 @@ public class AuthService {
     private EmployeeRepo employeeRepo;
 
     @Autowired
+    @Lazy
     private InquiryService inquiryService;
 
 

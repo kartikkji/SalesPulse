@@ -19,6 +19,7 @@ public class EmployeesReqDto {
    private String role;
    private Long phoneNumber;
    private String email;
+   private String password;
 
 
 }
